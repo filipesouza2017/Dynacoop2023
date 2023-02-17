@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.CrmSdk.CoreTools</id>
+    <version>9.1.0.115</version>
+    <title>Microsoft Dynamics 365 SDK core tools</title>
+    <authors>Microsoft</authors>
+    <owners>crmsdk,Microsoft</owners>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <licenseUrl>http://download.microsoft.com/download/E/1/8/E18C0FAD-FEC8-44CD-9A16-98EDC4DAC7A2/LicenseTerms.docx</licenseUrl>
+    <icon>images\Dataverse.128x128.png</icon>
+    <projectUrl>https://docs.microsoft.com/dynamics365/customer-engagement/developer/developer-guide</projectUrl>
+    <description>This package contains the official SDK tools authored by the Microsoft Common Data Service SDK team.
+The included command line tools are installed in the project's bin\coretools folder.</description>
+    <summary>Tools required to develop managed code applications and solutions for Dynamics 365 (online and on-premises).</summary>
+    <releaseNotes>These tools may be used for application and solution development. The Microsoft .NET Framework 4.6.2 must be installed on the computer where these tools are to execute.
+
+For information about downloading the tools, see https://docs.microsoft.com/dynamics365/customer-engagement/developer/download-tools-nuget
+
+9.1.0.115:
+    SolutionPackager:
+        - fix exception "key item already exists" when packaging solutions with CanvasApps and packageType:Both
+
+9.1.0.110:
+    CrmServiceClientUtil:
+        - Added #pragma warning disable CS1591 / #pragma warning restore CS1591 surrounding generated code for C# to comply with Code Quality rules.
+        - Moved CrmServiceUtil Version number to a normal comment in the code vs a NS comment.
+        - support for Korea and Norway GEOs
+
+9.1.0.108:
+    SolutionPackager:
+	- Added new behavior to sync the fully qualified name of a plugin in a solution assets to the fully qualified name of the plugin included in the solution itself. 
+            Enabled by default, can be disabled by setting /fp:false on command line. 
+            Effective only during Pack Operations. 
+            This will allow you to use the file mapping features of solutionpackager for plugins and maintain the public signature of the PluginAssembly build added to the solution. 
+        - fix handling of CanvasApp where app name and paths to composite files (.msapp, image) differ; file name reference in meta xml is now source of truth
+    - fixed bool options on cmdline to accept true / false vs existing + / -. 
+   
+    CrmServiceUtil:    
+        Formalized EXPERIMENTAL options to cmdline properties.
+        - Added support for filtering the entities codegenerated via command line switch.  /entitynamesfilter:&lt;semicolon list&gt;
+            Ex:  /entitynamesfilter:account;contact;lead - will emit only the account, contact and lead entities
+        - Added support for filtering the messages codegenerated via command line switch. /messagenamesfilter:&lt;semicolon list&gt;
+            Must be used with the /includeMessages
+            - this feature support wild card filtering for begins with or ends with
+            Ex: begins with: "/includeMessages  /messagenamesfilter:msdy_*;" - includes all messages that start with msdy_.
+            Ex: ends with: "/includeMessages  /messagenamesfilter:*mymessage;" - includes all messages that end with mymessage.
+            Ex: in: "/includeMessages  /messagenamesfilter:msdyn_testmessage;new_mymessage01;new_mymessage02" - includes only messages in the list in generated code.
+        - Added new cmdline operations: 
+            /legacyMode - when present, causes CrmSvcUtil to behave in a manner pre February 2022.
+            /splitfiles - when present, causes CrmSvcUtil to emit a file per class to the output directory
+            /generateGlobalOptionSets - when present, causes GlobalOptionSets to be generated. 
+            /outdir - works with /splitfiles and specifies the directory to write model folder too. 
+        - Added duplicate optionset property name detection, duplicate optionset properties will now appear as optionName#
+        - Fixed optionset name generation if the optionset name starts with a digit., such optionsets will now appear as _&lt;optionname&gt;
+        - Added Enum's for Optionsets that are name addressable
+        - Added validation for either /out or /outdir + /splitfiles
+        Ex:
+            Crmsvcutl splitting files without global optionsets to folder
+                CrmSvcUtil.exe /il /n:MyNameSpace /entitynamesfilter:account;systemuser;role /emitfc /splitfiles /svcctx:dvSvcContext /outdirectory:E:\src\myproject\connecttoDv\Model /sgca
+
+            Crmsvcutl splitting files with global optionsets to folder
+                CrmSvcUtil.exe /il /n:MyNameSpace /entitynamesfilter:account;systemuser;role /emitfc /splitfiles /svcctx:dvSvcContext /outdirectory:E:\src\myproject\connecttoDv\Model /sgca /generateGlobalOptionSets
+
+
+9.1.0.92:
+    CrmServiceUtil - 
+        - Added support for emitting fields and an enum within the codegended object using the /emitfieldsclasses or /emitfc
+        
+        EXPERIMENTAL: 
+        // Note: These features can only be supplied on the cmdline currently.
+        - Added support for filtering the entities codegenerated via command line switch.  /entitynamesfilter:&lt;semicolon list&gt;
+            Ex:  /entitynamesfilter:account;contact;lead - will emit only the account, contact and lead entities
+        - Added support for filtering the messages codegenerated via command line switch. /messagenamesfilter:&lt;semicolon list&gt;
+            Must be used with the /includeMessages
+            - this feature support wild card filtering for begins with or ends with
+            Ex: begins with: "/includeMessages  /messagenamesfilter:msdy_*;" - includes all messages that start with msdy_.
+            Ex: ends with: "/includeMessages  /messagenamesfilter:*mymessage;" - includes all messages that end with mymessage.
+            Ex: in: "/includeMessages  /messagenamesfilter:msdyn_testmessage;new_mymessage01;new_mymessage02" - includes only messages in the list in generated code.
+
+9.1.0.90:
+    SolutionPackager:
+        - add support for ModernSiteMap
+
+9.1.0.88:
+    CrmServiceUtil:
+        - Added auto type filtering based on version of SDK Libs available to CrmServiceUtil at time of use. this will reduced the frequency of classes being created that are not supported by the current SDK libs
+        - Added some timing and status information to the general console ui.
+        - Updated online login flows to always use oAuth flows for connection to Dataverse online. Note, this does not apply to connection strings. 
+    All Tools:
+    - Updated Newtonsoft.Json to v11.0.2 to match server.
+    - Updated to latest BatchedTelemetry.
+
+9.1.0.79:
+    SolutionPackager:
+        - Fix XML declaration and encoding when packaging in localization files
+        - Support for license/service plan entities
+
+9.1.0.68:
+    CrmServiceUtil:
+        - Added Support to generate properties for EntitySetName, EntityCollectionName
+        - Added new command line parameter to support removing the Generated Code Attribute from every class
+            Command line parameter is /SuppressGeneratedCodeAttribute or /sgca for short. 
+        - Added Support to detect and modify the use of reserved SDK names by SolutionAware Entities.
+            This should cut down on the issues seen when a solution aware entity includes a field name like "EntityLogicalName"
+            Should this occur, a the class member will end up with the name "EntityLogicalName1"
+        - Fixed an issue where an Empty Enum would be generated for an optionset with no members. 
+            Going forward, if an OptionSet exists with no members, it, and any property that utilizes it will be excluded from code gen.
+        - Fixed an issue where an invalid SDK Message mapping could cause a null exception in the CrmServiceClientUtil. 
+            This edge case has appeared in a few environments with enough consistency to warrant a fix to the tool to handle that state. 
+
+9.1.0.64:
+    SolutionPackager:
+        - Correctly roundtrip empty NavigationSettings in AppModule
+        - Exception will be thrown when canvas app doesn't have any matching filename with its name
+        - Fixed crash when more than one SolutionPackager was running in parallel
+        - Fixed args parsing issue when args has backslash followed by a quote
+        - Added support for localization of sharded components
+
+9.1.0.44:
+    CrmServiceClient:
+        Fixed Authority property data loss post clone process
+
+9.1.0.43:
+    SolutionPackager:
+        Support service-side sharding of component files during extract and pack. Consequence of this when packing a solution zip: any subfolder and its files in the solution's root folder will be treated as potential component files and added to the solution.zip. Folders with names as bin/obj will be ignored during extract and pack.
+        Support processing files longer than 260 chars
+        Fix adding localization duplicates when writing resources into .resx file
+        Improved performance while handling localized files
+        Fixed crash when the same component file was referenced from different locations using web vs windows path to that file
+    
+9.1.0.39:
+    Fixed a bug with components in managed solutions when the user was not passing packagetype argument.
+    
+9.1.0.38:
+    SolutionPackager:
+        - respect unmanaged SiteMap.xml if packing with '/useUnmanagedFileForMissingManaged'
+
+9.1.0.22:
+    SolutionPackager:
+        - fix name detection in EnvironmentVariable components
+        - emit actionable error message when referenced formula xaml file is missing in solution.zip
+
+9.1.0.21:
+    CrmServiceUtil:
+    Fixed a bug with how errors are handled when they are raised from ADAL 3.19+.  MFA Force Login will now work properly again. 
+    Added 3 new GEO's to Selection List.
+        Region Name - RegionCode:
+            United Arab Emirates - UAE
+            South Africa - ZAF
+            Germany (Go Local) - GER
+    
+9.1.0.14:        
+    SolutionPackager: - Added anonymous telemetry to SolutionPackager; to opt out use PowerApps CLI, see:
+    [PowerApps CLI telemetry](https://docs.microsoft.com/en-us/powerapps/developer/component-framework/get-powerapps-cli#microsoft-powerapps-cli-telemetry)
+
+9.1.0.13:
+    CrmServiceUtil:
+    ADAL 3.19+ is now required for this library.  ADAL 2.x clients will need to be updated to use ADAL 3.x+
+    Added Support for Current User ID login when using Online flows with oAuth ( Including constructor/connection string support )
+    Added Support for ClientID Secret Auth when using oAuth flows. ( Including constructor/connection string support )
+
+    SolutionPackager:
+    - support for Environment Variables (definitions and values)
+    - support for Connectors
+    - when packing components/subcomponents that distinguish unmanaged and managed XML files (e.g. AppModuleSiteMap, AppModule, FormXml),
+        then use an unmanaged file if a '*_managed.xml' file cannot be found
+        This is an opt-in behavior, selected by the new command line param: '/useUnmanagedFileForMissingManaged'
+    - fixed NullReferenceException when package type was not specified and packaging both managed &amp; unmanaged
+
+
+9.0.3.5:
+    bug fixes SolutionPackager:
+    - allow relative folder paths (no longer 'invalid URL' errors)
+    - RootComponentValidation for generic components now only warns, since a generic component cannot be validated
+9.0.3.4:
+    bug fixes:
+    - CustomControl: issue helpful warnings and auto-generate metadata XML for incompletely migrated PCF controls
+    - CrmServiceUtil: fix its assembly version to 9.0.0.0 (binary content already had 9.x functionality, but previous version showed misleadingly as being 8.x)
+9.0.3.3:
+    SolutionPackager: pack from single AppModuleSiteMaps file for packageType=both unless an explicit AppModuleSiteMap_managed.xml file is found
+9.0.3.2:
+    CrmSvcUtil: Added Support for China Geo
+9.0.3.1:
+    SolutionPackager:
+    - support extract/pack for CustomControls, their custom manifest and control resources
+    - support extract/pack Flow and CanvasApp
+    - support extract/pack for not yet supported components; information in Customizations.xml and component files
+    will be extracted and packed without roundtrip loss, but no parsing or component-specific checks
+9.0.2.12:
+    Fixed bug in CrmServiceClient which would cause some OnPrem connections to fail with an error "Item already added to List"
+    Minor Pref Improvements
+
+9.0.2.11:
+    Updated to include Fixed version of CrmServiceClient and login control for new US Geo ( US Gov High ) 
+    Applies to CrmSvcUtil primarily
+
+9.0.2.9: 
+    Note .net 4.6.2 is now required as a baseline
+    Fixed AppModuleSiteMap to support both unmanaged and managed local files side-by-side
+
+9.0.2.6:
+    Corrected Code Sign issue on SolutionPackager
+9.0.2.5: 
+    Updated for 9.0.2.1080 CDS/XRM release
+    Fixed an issue in SolutionPackager.exe where it was incorrectly adding a visualizations node to savedqueries nodes
+
+9.0.2.4: Updated for 9.0.2.449 CDS/XRM release
+9.0.2.3: 
+    Updated with Xrm.Tooling.Connector support
+    Added new dependencies for Xrm.Tooling.Connector.dll 
+9.0.0.6: Adding missing file for interactive use of CrmServiceUtil.  Will enabled the /il switch.
+9.0.0.5: 9.0 Initial Release
+9.0.0.2-Preview: 
+9.0 Initial Release 
+    SolutionPackager: 
+        Major updates to solution packager to support new component types. *note: SolutionPackager 8.x is not compatible with all component types in 9.x +
+    XrmToolingConnector: 
+        New interfaces to support certificate based auth.
+        Added support to skip discovery
+        Added Clone connection support of OAuth based connections
+        Added New Authentication type to support externally hosted auth. 
+        **Note: Interface for Xrm.Tooling.Connector is *NOT* Final. there are new API interfaces that will be surfaced before GA.
+    CrmSvcUtil:
+        Seveal preformance updates.
+8.2.0.5:
+    Fix to memory leak in Microsoft.Xrm.Tooling.Connector.TraceLoggerBase.  Trace Listener collection would not be released within a process over a very long time frame over multiple connections. This would manifest as increasing memory consumption over a very long period. 
+    Fix cleans this up on the .dispose() call on the CrmServiceClient. 
+    Note: if you have built your own logger based on the Microsoft.Xrm.Tooling.Connector.TraceLoggerBase, you must call .dispose() when you are done with it to clean up the listener collection assigned to it.
+
+8.2.0.4:
+    Fixes:
+    Addressed an issue with customers who use optionset type generators and or linq class access that do not have a handler to define type enum’s for optionsets.  This update will provide support for older behaviors in addition to supporting developer who use enum based optionset generators 
+
+8.2.0.3: 
+    CrmSvcUtil.exe : 
+        Updated to correct version of crmsvcutil for the current version of CRM that exposes all command line switches
+    SolutionPackager.exe: 
+        Fixes in dependency mapper and that caused issues with some solutions
+8.2.0.2: Fix of dependency issue in nuget package. Now properly requires .net 4.5.2 as a baseline
+8.2.0.1 Refreshed from current release
+    Fixed site map packing issue in solutionpackager.exe
+8.2.0: Removed Deprecated Assemblies and Executables. Updated to current bits.
+8.1.0.1: Updated the Microsoft.IdentityModel.Clients.ActiveDirectory assemblies as required by the Xrm Tooling assemblies.
+8.1.0: CRM Online 2016 Update 1
+8.1-preview: Pre-release CRM Online 2016 Update 1
+8.0.2.1: UR1 (Update Rollup 1) with customer related hotfix
+8.0.2: UR1 (Update Rollup 1)
+8.0.1: GA (General Availability)
+8.0.0: RTM release
+
+
+* The CrmSvcUtil.exe program has been updated with additional command line parameters. For more information, run the program with no parameters to see the online help.</releaseNotes>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <language>en-US</language>
+    <tags>Dynamics CRM SDK XRM D365 Dynamics365 365 CommonDataService CDS PowerApps Dataverse</tags>
+  </metadata>
+</package>

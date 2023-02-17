@@ -1,0 +1,1188 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Xrm.Tooling.Dmt.DataMigCommon</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.InteractionCommonVars">
+            <summary>
+            This Static Class Contains Common Vars
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.InteractionCommonVars.schemaObject">
+            <summary>
+            This deserialized Schema object. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.InteractionCommonVars.ExportDataFileName">
+            <summary>
+            Common name of the exported file for the Data level export system.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.InteractionCommonVars.ExportScheamDataFileName">
+            <summary>
+            Common name of the exported data file schema of the export system
+            </summary>
+        </member>
+        <member name="T:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.ImportCommonMethods">
+            <summary>
+            these are static methods used across ImportThreads. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.ImportCommonMethods.RecordReferance_lockObject">
+            <summary>
+            Record Reference Lock object. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.ImportCommonMethods.LookupKeys">
+            <summary>
+            Lookup keys for this import. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.ImportCommonMethods.LookupRecordNotLoadedFirstPass">
+            <summary>
+            List of Not Loaded first pass 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.ImportCommonMethods.OldToNewRecordIdMatch">
+            <summary>
+            Keeps of reference dictionary of Old and new Record ID's 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.ImportCommonMethods.EntityOwnerShipLevel">
+            <summary>
+            contains a list of entities that have been identified. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.ImportCommonMethods.EntityReaderCache">
+            <summary>
+            Manage a cached entity used during lookup of data for comparisons. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.ImportCommonMethods.MissingSchemaEntity">
+            <summary>
+            manages the list of DataElements that are missing schema references. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.ImportCommonMethods.dataEntities">
+            <summary>
+            DataFile to Import 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.ImportCommonMethods.TotalCountOfRecordsToImport">
+            <summary>
+            Returns the total number of records in the import process. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.ImportCommonMethods.GetSchemaEntity(Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntity,Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entities)">
+            <summary>
+            Gets the schema entity.
+            </summary>
+            <param name="entity">The entity.</param>
+            <param name="schemaEntities">The schema entities.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.ImportCommonMethods.GetFieldTypeFromSchema(System.String,Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntity)">
+            <summary>
+            Gets the field type from schema.
+            </summary>
+            <param name="fieldName">Name of the field.</param>
+            <param name="schemaEntity">The schema entity.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.ImportCommonMethods.GetCrmFieldTypeFromField(System.String)">
+            <summary>
+            Gets the CRM field type from field.
+            </summary>
+            <param name="fieldType">Type of the field.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.ImportCommonMethods.GetRecordFromDataEntities(Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntity,System.String)">
+            <summary>
+            Search the Import data to see if an item we want to import is in it. 
+            </summary>
+            <param name="inImportEntity">Entity for search</param>
+            <param name="id">ID of the item from the export system</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.ImportCommonMethods.GetSchemaField(System.String,Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntity)">
+            <summary>
+            Gets the schema field.
+            </summary>
+            <param name="fieldName">Name of the field.</param>
+            <param name="schemaEntity">The schema entity.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.ImportCommonMethods.GetStatusAndState(Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRecordField[],System.Int32@,System.Int32@)">
+            <summary>
+            Gets the state of the status and.
+            </summary>
+            <param name="fields">The fields.</param>
+            <param name="stateCode">The state code.</param>
+            <param name="statusCode">The status code.</param>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.ImportCommonMethods.GetDefaultStateAndStatusCodesForEntity(Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntity,System.Nullable{System.Int32}@,System.Nullable{System.Int32}@)">
+            <summary>
+            Returns the default state and status fields for a given entity schema. 
+            </summary>
+            <param name="schemaEntity"></param>
+            <param name="defaultStateCode"></param>
+            <param name="defaultStatuscode"></param>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.ImportCommonMethods.GetStatusAndState(System.Collections.Generic.Dictionary{System.String,Microsoft.Xrm.Tooling.Connector.CrmDataTypeWrapper},System.Int32@,System.Int32@)">
+            <summary>
+            Gets the state of the status and.
+            </summary>
+            <param name="fields">The fields.</param>
+            <param name="stateCode">The state code.</param>
+            <param name="statusCode">The status code.</param>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.ImportCommonMethods.AddCrossReferanceIdToList(System.Guid,System.Guid)">
+            <summary>
+            Adds a Cross Reference ID to the Parking queue
+            </summary>
+            <param name="oldId"></param>
+            <param name="newId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.ImportCommonMethods.GetNewRecordIdFromReferance(System.Guid)">
+            <summary>
+            Returns the GUID for the new ID by cross refing the old. 
+            </summary>
+            <param name="oldId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.ImportCommonMethods.AddMissingSchemaEntity(System.String,System.String)">
+            <summary>
+            Adds a reference to the MissingSchema entry group. 
+            </summary>
+            <param name="entityName"></param>
+            <param name="fieldName"></param>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.ImportCommonMethods.AddMissingSchemaEntity(System.String)">
+            <summary>
+            Adds a reference to the MissingSchema entry group. 
+            </summary>
+            <param name="keyRef"></param>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.ImportCommonMethods.IsOnMissingSchemaEntityList(System.String,System.String)">
+            <summary>
+            Check to see if the entity name + field name is in the missing entity list. 
+            </summary>
+            <param name="entityName"></param>
+            <param name="fieldName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.ImportCommonMethods.ClearCrossReferanceList">
+            <summary>
+            Clears the Cross Reference Key List. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.ImportCommonMethods.AddEntityDataCache(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.Dictionary{System.String,System.Object}})">
+            <summary>
+            Adds a new entry to the Entity Data cache
+            </summary>
+            <param name="entityName"></param>
+            <param name="rowdata"></param>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.ImportCommonMethods.ClearEntityDataCache(System.String)">
+            <summary>
+            Clear's Entity records from static buffer.
+            </summary>
+            <param name="entityName"></param>
+        </member>
+        <member name="T:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.ReprocessDataRecords">
+            <summary>
+            This Class Contains the ReprocessDataRecords Data
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.ReprocessDataRecords.record">
+            <summary>
+            Record to reprocess. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.ReprocessDataRecords.triggeringFields">
+            <summary>
+            Field that triggered the reprocess. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.ReprocessDataRecords.reason">
+            <summary>
+            Reasoncode. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.ReprocessDataRecords.#ctor">
+            <summary>
+            C'tor
+            </summary>
+        </member>
+        <member name="T:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.ReprocessFieldItem">
+            <summary>
+            This class contains the ReprocessFieldItem Data.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.ReprocessFieldItem.reason">
+            <summary>
+            Reason
+            </summary>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.ReprocessFieldItem.#ctor">
+            <summary>
+            C'tor
+            </summary>
+        </member>
+        <member name="T:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.RecordReprocessReason">
+            <summary>
+            RecordReprocessReason
+            </summary>
+        </member>
+        <member name="F:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.RecordReprocessReason.LookupRecordNotLoaded">
+            <summary> LookupRecordNotLoaded </summary>
+        </member>
+        <member name="F:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.RecordReprocessReason.LookupRecordNotAvailable">
+            <summary> LookupRecordNotAvailable </summary>
+        </member>
+        <member name="F:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.RecordReprocessReason.RequestedFieldNotInSchemaDef">
+            <summary>
+            Raised when there is a field in the data file that is not in the schema file. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.RecordReprocessReason.None">
+            <summary> None </summary>
+        </member>
+        <member name="T:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.FieldReprocessAction">
+            <summary>
+            Field Reprocess Action
+            </summary>
+        </member>
+        <member name="F:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.FieldReprocessAction.Update">
+            <summary> Update </summary>
+        </member>
+        <member name="F:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.FieldReprocessAction.Skip">
+            <summary> Skip </summary>
+        </member>
+        <member name="F:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataInteraction.FieldReprocessAction.None">
+            <summary> None </summary>
+        </member>
+        <member name="T:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entities">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entities.entity">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entities.timestamp">
+            <remarks/>
+        </member>
+        <member name="E:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entities.PropertyChanged">
+            <remarks/>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entities.RaisePropertyChanged(System.String)">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntity">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntity.records">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntity.relationships">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntity.m2mrelationships">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntity.name">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntity.displayname">
+            <remarks/>
+        </member>
+        <member name="E:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntity.PropertyChanged">
+            <remarks/>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntity.RaisePropertyChanged(System.String)">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRecord">
+            <remarks/>
+            <summary>
+            Define properties on entitiesEntityRecord used at runtime, not defined by Data.xsd
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRecord.field">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRecord.id">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRecord.newId">
+            <remarks/>
+        </member>
+        <member name="E:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRecord.PropertyChanged">
+            <remarks/>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRecord.RaisePropertyChanged(System.String)">
+            <remarks/>
+        </member>
+        <member name="F:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRecord.ForceNew">
+            <summary>
+            ForceNew
+            </summary>
+        </member>
+        <member name="F:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRecord.FoundRecordId">
+            <summary>
+            FoundRecordId
+            </summary>
+        </member>
+        <member name="F:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRecord.FoundRecord">
+            <summary>
+            FoundRecord
+            </summary>
+        </member>
+        <member name="T:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRecordField">
+            <remarks/>
+            <summary>
+            Define properties on entitiesEntityRecordField used at runtime, not defined by Data.xsd
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRecordField.activitypointerrecords">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRecordField.name">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRecordField.value">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRecordField.filename">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRecordField.lookupentity">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRecordField.lookupentityname">
+            <remarks/>
+        </member>
+        <member name="E:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRecordField.PropertyChanged">
+            <remarks/>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRecordField.RaisePropertyChanged(System.String)">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRecordField.Type">
+            <summary>
+            Field type
+            </summary>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRecordField.ToString">
+            <seealso cref="M:System.Object.ToString"/>
+        </member>
+        <member name="T:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRecordFieldActivitypointerrecords">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRecordFieldActivitypointerrecords.field">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRecordFieldActivitypointerrecords.id">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRecordFieldActivitypointerrecords.newId">
+            <remarks/>
+        </member>
+        <member name="E:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRecordFieldActivitypointerrecords.PropertyChanged">
+            <remarks/>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRecordFieldActivitypointerrecords.RaisePropertyChanged(System.String)">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRecordFieldActivitypointerrecordsField">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRecordFieldActivitypointerrecordsField.name">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRecordFieldActivitypointerrecordsField.value">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRecordFieldActivitypointerrecordsField.lookupentity">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRecordFieldActivitypointerrecordsField.lookupentityname">
+            <remarks/>
+        </member>
+        <member name="E:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRecordFieldActivitypointerrecordsField.PropertyChanged">
+            <remarks/>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRecordFieldActivitypointerrecordsField.RaisePropertyChanged(System.String)">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRelationship">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRelationship.records">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRelationship.name">
+            <remarks/>
+        </member>
+        <member name="E:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRelationship.PropertyChanged">
+            <remarks/>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRelationship.RaisePropertyChanged(System.String)">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRelationshipRecord">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRelationshipRecord.field">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRelationshipRecord.id">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRelationshipRecord.newId">
+            <remarks/>
+        </member>
+        <member name="E:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRelationshipRecord.PropertyChanged">
+            <remarks/>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRelationshipRecord.RaisePropertyChanged(System.String)">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRelationshipRecordField">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRelationshipRecordField.name">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRelationshipRecordField.value">
+            <remarks/>
+        </member>
+        <member name="E:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRelationshipRecordField.PropertyChanged">
+            <remarks/>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRelationshipRecordField.RaisePropertyChanged(System.String)">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityM2mrelationship">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityM2mrelationship.targetids">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityM2mrelationship.sourceid">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityM2mrelationship.targetentityname">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityM2mrelationship.targetentitynameidfield">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityM2mrelationship.m2mrelationshipname">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityM2mrelationship.m2mrelationshipschemaname">
+            <remarks/>
+        </member>
+        <member name="E:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityM2mrelationship.PropertyChanged">
+            <remarks/>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityM2mrelationship.RaisePropertyChanged(System.String)">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entities">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entities.entityImportOrder">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entities.entity">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entities.dateMode">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entities.dateModeSpecified">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntity">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntity.fields">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntity.relationships">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntity.filter">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntity.name">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntity.displayname">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntity.etc">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntity.primaryidfield">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntity.primarynamefield">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntity.disableplugins">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntity.skipupdate">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntity.skipupdateSpecified">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntityField">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntityField.updateCompare">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntityField.updateCompareSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntityField.displayname">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntityField.name">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntityField.type">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntityField.primaryKey">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntityField.primaryKeySpecified">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntityField.lookupType">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntityField.customfield">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntityField.customfieldSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntityField.dateMode">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntityField.dateModeSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntityField.defaultPickListValue">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.DateMode">
+            <remarks/>
+        </member>
+        <member name="F:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.DateMode.absolute">
+            <remarks/>
+        </member>
+        <member name="F:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.DateMode.relative">
+            <remarks/>
+        </member>
+        <member name="F:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.DateMode.relativeDaily">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntityRelationship">
+            <remarks/>
+            <summary>
+            Define properties used at runtime, not defined by Schema.xsd
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntityRelationship.fields">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntityRelationship.name">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntityRelationship.manyToMany">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntityRelationship.isreflexive">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntityRelationship.isreflexiveSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntityRelationship.relatedEntityName">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntityRelationship.referencedAttribute">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntityRelationship.referencedEntity">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntityRelationship.referencingAttribute">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntityRelationship.referencingEntity">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntityRelationship.m2mTargetEntity">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntityRelationship.m2mTargetEntityPrimaryKey">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntityRelationship.M2MSchemaName">
+            <summary>
+            Schema name.. set at run time.. ignore. 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntityRelationshipField">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntityRelationshipField.name">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntityRelationshipField.type">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntityRelationshipField.primaryKey">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntityRelationshipField.primaryKeySpecified">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntityRelationshipField.customfield">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntityRelationshipField.customfieldSpecified">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.MapFileAssets.MappingConfiguration">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.MapFileAssets.MappingConfiguration.UserMapping">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.MapFileAssets.MappingConfiguration.DefaultUserToMapTo">
+            <remarks/>
+        </member>
+        <member name="E:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.MapFileAssets.MappingConfiguration.PropertyChanged">
+            <summary>
+            Default Event Hook for INotifyPropertyChanged
+            </summary>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.MapFileAssets.MappingConfiguration.RaisePropertyChanged(System.String)">
+            <summary>
+            Raise Property Changed Method
+            </summary>
+            <param name="propertyName"></param>
+        </member>
+        <member name="T:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.MapFileAssets.MappingConfigurationUserMapping">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.MapFileAssets.MappingConfigurationUserMapping.UserFullname">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.MapFileAssets.MappingConfigurationUserMapping.Old">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.MapFileAssets.MappingConfigurationUserMapping.New">
+            <remarks/>
+        </member>
+        <member name="E:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.MapFileAssets.MappingConfigurationUserMapping.PropertyChanged">
+            <summary>
+            Default Event Hook for INotifyPropertyChanged
+            </summary>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.MapFileAssets.MappingConfigurationUserMapping.RaisePropertyChanged(System.String)">
+            <summary>
+            Raise Property Changed Method
+            </summary>
+            <param name="propertyName"></param>
+        </member>
+        <member name="T:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.AppSettingsHelper">
+            <summary>
+            Manages reading settings from app.config of associated files. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.AppSettingsHelper.GetAppSetting``1(System.String,``0,Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.TraceLogger)">
+            <summary>
+            Reads app setting from config file; if not found, returns <param name="defaultValue">the default value</param>.
+            </summary>
+            <param name="key">The setting key</param>
+            <param name="logSink">Logger to use if available, else will be created and used for this session only</param>
+            <return>Returns the setting value or default value.</return>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.AppSettingsHelper.GetAppSettingTimeSpan(System.String,Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.AppSettingsHelper.TimeSpanFromKey,System.TimeSpan,Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.TraceLogger)">
+            <summary>
+            Picks up a string value from the app config and converts it to the string value version based on the format provided. 
+            </summary>
+            <param name="key">Key to lookup from the appconfig</param>
+            <param name="format">TimeSpan format to convert from ( "d" = days, "m" = Minuets , "h" = hours , "s" = seconds , "ms" = Milliseconds ) </param>
+            <param name="defaultValue">default value to use of the key is not found</param>
+            <param name="logSink">Logger to use if available, else will be created and used for this session only</param>
+            <returns>Determined timeSpan value.</returns>
+        </member>
+        <member name="T:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.AppSettingsHelper.TimeSpanFromKey">
+            <summary>
+            Formatting Value for Text to TimeSpan conversion. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.AppSettingsHelper.TimeSpanFromKey.Minutes">
+            <summary>
+            Minutes
+            </summary>
+        </member>
+        <member name="F:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.AppSettingsHelper.TimeSpanFromKey.Hours">
+            <summary>
+            Hours
+            </summary>
+        </member>
+        <member name="F:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.AppSettingsHelper.TimeSpanFromKey.Seconds">
+            <summary>
+            Seconds
+            </summary>
+        </member>
+        <member name="F:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.AppSettingsHelper.TimeSpanFromKey.Milliseconds">
+            <summary>
+            Milliseconds
+            </summary>
+        </member>
+        <member name="F:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.AppSettingsHelper.TimeSpanFromKey.Days">
+            <summary>
+            Days
+            </summary>
+        </member>
+        <member name="T:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.FetchXmlValidator">
+            <summary>
+            This class contains methods that will validate a input FetchXML
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.FetchXmlValidator.ErrorMessge">
+            <summary>
+            Validation error message if any
+            </summary>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.FetchXmlValidator.Validate(System.String)">
+            <summary>
+            Validate FetchXML
+            </summary>
+            <param name="xmlContent">FetchXML content</param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.Helper">
+            <summary>
+            General Helper Utilities 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.Helper._logger">
+            <summary>
+            private logger
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.Helper.logger">
+            <summary>
+            Trace Logger
+            </summary>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.Helper.CreateTraceLogger(System.String)">
+            <summary>
+            Creates a Tracelogger with a specific area
+            </summary>
+            <param name="traceName"></param>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.Helper.Serialize``1(System.Object)">
+            <summary>
+            Create a Serialized object from a known type. 
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="objToSerialize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.Helper.Deserialize``1(System.String)">
+            <summary>
+            Create an object from a Serialized String for a Known Type. 
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="fileName"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.Helper.Validator">
+            <summary>
+            Used by Import code to check access SchemaValidator info
+            </summary>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.Helper.IsCustomEntity(System.Int32)">
+            <summary>
+            Returns true if the Entity is a custom entity. 
+            </summary>
+            <param name="etcid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.Helper.PageEnabledFetchFromCRM(Microsoft.Xrm.Tooling.Connector.CrmServiceClient,System.String,System.Collections.Generic.List{Microsoft.Xrm.Tooling.Connector.CrmServiceClient.CrmSearchFilter},System.Collections.Generic.List{System.String},System.String@,System.Boolean@,System.Int32,System.Int32)">
+            <summary>
+            Get from CRM with Paging control.. 
+            </summary>
+            <param name="svcConn"></param>
+            <param name="filters"></param>
+            <param name="logicalName"></param>
+            <param name="fieldList"></param>
+            <param name="pageCookie"></param>
+            <param name="isMoreRecords"></param>
+            <param name="iPageCount"></param>
+            <param name="iPageNumber"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.Helper.GetRecordCountForEntity(Microsoft.Xrm.Tooling.Connector.CrmServiceClient,System.String,System.String)">
+            <summary>
+            Returns a Record count for the Entity that is provide. 
+            </summary>
+            <param name="crmConnection"></param>
+            <param name="entityName"></param>
+            <param name="entityKeyFieldId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.Helper.GetQueueItemfromQueue``1(System.Collections.Concurrent.ConcurrentQueue{``0})">
+            <summary>
+            Read an item from a concurrent queue.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="workingQueue"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.ProgressItemStatus">
+            <summary>
+            Status of a progress Item. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.ProgressItemStatus.Working">
+            <summary> Working </summary>
+        </member>
+        <member name="F:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.ProgressItemStatus.Complete">
+            <summary> Complete </summary>
+        </member>
+        <member name="F:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.ProgressItemStatus.Failed">
+            <summary> Failed </summary>
+        </member>
+        <member name="F:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.ProgressItemStatus.Warning">
+            <summary> Warning </summary>
+        </member>
+        <member name="F:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.ProgressItemStatus.Unknown">
+            <summary> Unknown </summary>
+        </member>
+        <member name="T:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.ProgressItemEventArgs">
+            <summary>
+            Status Event update 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.ProgressItemEventArgs.progressItem">
+            <summary>
+            Progress Item
+            </summary>
+        </member>
+        <member name="T:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.StatusEventUpdate">
+            <summary>
+            Status event args
+            </summary>
+        </member>
+        <member name="F:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.StatusEventUpdate.ProgressItemId">
+            <summary>
+            Progress Item Id
+            </summary>
+        </member>
+        <member name="F:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.StatusEventUpdate.ItemText">
+            <summary>
+            Item Text
+            </summary>
+        </member>
+        <member name="F:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.StatusEventUpdate.ItemStatus">
+            <summary>
+            Item Status
+            </summary>
+        </member>
+        <member name="T:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.UserMapRequiredEventArgs">
+            <summary>
+            Event Args for System Users Require Mapping Event. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.UserMapRequiredEventArgs.SystemUsersToImport">
+            <summary>
+            System Users To Import
+            </summary>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.UserMapRequiredEventArgs.#ctor(Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntity)">
+            <summary>
+            Populate with System users. 
+            </summary>
+            <param name="records"></param>
+        </member>
+        <member name="T:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.SchemaValidator">
+            <summary>
+            This class contains methods that will validate a scheme for import. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.SchemaValidator.MissingEntityList">
+            <summary>
+            List of entities that are missing from the import. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.SchemaValidator.TargetSystemEntityInfo">
+            <summary>
+            Returns the Target System Entity Information. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.SchemaValidator.#ctor">
+            <summary>
+            Constructor for the class. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.SchemaValidator.LoadSchemaInfoForEntities(System.Collections.Generic.List{System.String},Microsoft.Xrm.Tooling.Connector.CrmServiceClient,System.Object)">
+            <summary>
+            This method will generate schema information for the entities requested in the import. 
+            </summary>
+            <param name="impEntList">impEntList</param>
+            <param name="crmSvc">Crm Service Connection</param>
+            <param name="oDispatcher">Dispatcher object</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.SchemaValidator.ValidateSchemaElement(Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntity,System.Collections.Generic.List{System.String}@)">
+            <summary>
+            Validates the Inbound schema object against the target system. 
+            </summary>
+            <param name="importEntitySchema">ImportEntitySchema</param>
+            <param name="missingFields">List of Missing Fields</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.SchemaValidator.GetFieldStringList(System.Collections.Generic.List{System.String})">
+            <summary>
+             Formats the list of strings into a field list that can be attached to the log. 
+            </summary>
+            <param name="missingFields"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.TraceLogger">
+            <summary>
+            TraceLogger Class
+            </summary>
+        </member>
+        <member name="F:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.TraceLogger.source">
+            <summary>
+            Trace Tag. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.TraceLogger._LastError">
+            <summary>
+            String Builder Info
+            </summary>
+        </member>
+        <member name="F:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.TraceLogger._LastException">
+            <summary>
+            Last Exception
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.TraceLogger.Logs">
+            <summary>
+            Collection of logs captured to date. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.TraceLogger.LogRetentionDuration">
+            <summary>
+            Defines to the maximum amount of time in Minuets that logs will be kept in memory before being purged
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.TraceLogger.EnabledInMemoryLogCapture">
+            <summary>
+            Enables or disabled in-memory log capture. 
+            Default is false. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.TraceLogger.LastError">
+            <summary>
+            Last Error from CRM
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.TraceLogger.LastException">
+            <summary>
+            Last Exception from CRM 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.TraceLogger.#ctor(System.String)">
+            <summary>
+            c'tor
+            </summary>
+            <param name="traceSourceName">Trace Source Name</param>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.TraceLogger.ResetLastError">
+            <summary>
+            Resets the LastError Value.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.TraceLogger.Log(System.String)">
+            <summary>
+            Log a Message 
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.TraceLogger.Log(System.String,System.Diagnostics.TraceEventType)">
+            <summary>
+            Log a Trace event 
+            </summary>
+            <param name="message"></param>
+            <param name="eventType"></param>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.TraceLogger.Log(System.String,System.Diagnostics.TraceEventType,System.Exception)">
+            <summary>
+            Log a Trace event 
+            </summary>
+            <param name="message">Trace Message</param>
+            <param name="eventType">Event Type</param>
+            <param name="exception">Exception</param>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.TraceLogger.Log(System.Exception)">
+            <summary>
+            Log an error with an Exception
+            </summary>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.TraceLogger.SetTraceLevel(System.Diagnostics.SourceLevels)">
+            <summary>
+            Set trace level
+            </summary>
+            <param name="level"></param>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.TraceLogger.AddTraceListener(System.Diagnostics.TraceListener)">
+            <summary>
+            Set trace listener
+            </summary>
+            <param name="listener"></param>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.TraceLogger.LogExceptionToFile(System.Exception,System.Text.StringBuilder,System.Int32)">
+            <summary>
+            Logs the error text to the stream
+            </summary>
+            <param name="objException">Exception to be written</param>
+            <param name="sw">Stream writer to use to write the exception</param>
+            <param name="level">level of the exception, this deals with inner exceptions</param>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.TraceLogger.GetLogFilePath">
+            <summary>
+            Gives the Log file path
+            </summary>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.TraceLogger.TraceEvent(System.Diagnostics.TraceEventType,System.Int32,System.String)">
+            <summary>
+            Logs data to memory. 
+            </summary>
+            <param name="eventType"></param>
+            <param name="id"></param>
+            <param name="message"></param>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.TraceLogger.Dispose">
+            <summary>
+            Resources used by this logger ( if any ) 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.ZipUtils">
+            <summary>
+            Utility Class for Zip/Unzip
+            </summary>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.ZipUtils.UnZipFiles(System.String,System.String,System.Exception@)">
+            <summary>
+            Unzips a file to a directory 
+            </summary>
+            <param name="zipPathAndFile">File to Unzip</param>
+            <param name="outputFolder">where to unzip it too</param>
+            <param name="exception">The exception if raised</param>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.ZipUtils.ZipFiles(System.String,System.String,System.Boolean)">
+            <summary>
+            Zips the Directory specified to the output Zip File. 
+            </summary>
+            <param name="directoryToAdd">Directory Name</param>
+            <param name="outputZipFile">Output Zip File Name</param>
+            <param name="flattenStructure">drops the path from the inbound data</param>
+            <returns>true on success, false on fail. </returns>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.ZipUtils.ZipFiles(System.Collections.Generic.List{System.String},System.String,System.Boolean)">
+            <summary>
+            Zips the requested files into the output ZipFile. 
+            </summary>
+            <param name="fileNames">List of File Name to Zip</param>
+            <param name="outputZipFile">Output Zip File</param>
+            <param name="flattenStructure">drops the path from the inbound data</param>
+            <returns>True on Success</returns>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.ZipUtils.ZipFiles(System.Collections.Generic.List{System.String},System.String,System.String,System.Boolean)">
+            <summary>
+            Internal method for creating the zip files. 
+            </summary>
+            <param name="fileNames"></param>
+            <param name="directoryToAdd"></param>
+            <param name="outputZipFile"></param>
+            <param name="flattenStructure">drops the path from the inbound data</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.ZipUtils.CopyStream(System.IO.Stream,System.IO.Stream)">
+            <summary>
+            Copies the source stream to the target stream
+            </summary>
+            <param name="source"></param>
+            <param name="target"></param>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.ZipUtils.GetRelativeUri(System.String)">
+            <summary>
+            Converts a file path to a URI
+            </summary>
+            <param name="currentFile"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.ZipUtils.RemoveAccents(System.String)">
+            <summary>
+            Cleans up the resulting Uri
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.PowerPlatform.Tooling.Crm.Telemetry.CrmToolsTelemetryExtensions">
+            <summary>
+            Telemetry related extensions Crm (and Xrm) tools.
+            </summary>
+        </member>
+        <member name="T:Microsoft.PowerPlatform.Tooling.Crm.Telemetry.CrmToolsTelemetryExtensions.EventNames">
+            <summary>
+            Event names used for telemetry.
+            </summary>
+        </member>
+        <member name="F:Microsoft.PowerPlatform.Tooling.Crm.Telemetry.CrmToolsTelemetryExtensions.EventNames.StartWorkload">
+            <summary>StartWorkload</summary>
+        </member>
+        <member name="F:Microsoft.PowerPlatform.Tooling.Crm.Telemetry.CrmToolsTelemetryExtensions.EventNames.StopWorkload">
+            <summary>StopWorkload</summary>
+        </member>
+        <member name="T:Microsoft.PowerPlatform.Tooling.Crm.Telemetry.CrmToolsTelemetryExtensions.CustomPropertyNames">
+            <summary>
+            Names of custom properties used for events.
+            </summary>
+        </member>
+        <member name="F:Microsoft.PowerPlatform.Tooling.Crm.Telemetry.CrmToolsTelemetryExtensions.CustomPropertyNames.workloadType">
+            <summary>workloadType</summary>
+        </member>
+        <member name="F:Microsoft.PowerPlatform.Tooling.Crm.Telemetry.CrmToolsTelemetryExtensions.CustomPropertyNames.organizationId">
+            <summary>organizationId</summary>
+        </member>
+        <member name="M:Microsoft.PowerPlatform.Tooling.Crm.Telemetry.CrmToolsTelemetryExtensions.StartTrackingWorkload(Microsoft.PowerPlatform.Tooling.BatchedTelemetry.IAppTelemetryClient,System.String,System.Nullable{System.Guid},System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Creates a tracker for a the 'StartWorkload' and 'StopWorkload' events.
+            </summary>
+        </member>
+    </members>
+</doc>

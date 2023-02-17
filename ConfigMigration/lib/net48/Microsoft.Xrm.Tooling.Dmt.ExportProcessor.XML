@@ -1,0 +1,346 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Xrm.Tooling.Dmt.ExportProcessor</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.DataInteraction.ExportCrmDataHandler">
+            <summary>
+            ExportCrmDataHandler Class
+            </summary>
+        </member>
+        <member name="F:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.DataInteraction.ExportCrmDataHandler._addProductIdFilters">
+            <summary>
+            Signifies that all 4 entites listed in productTaxonomyEtntities are not added to import so we will add filters to product
+            so that only those products are imported which do not have an associated property
+            </summary>
+        </member>
+        <member name="F:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.DataInteraction.ExportCrmDataHandler.productTaxonomyEntities">
+            <summary>
+            List of entities which are related to dynamic property
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.DataInteraction.ExportCrmDataHandler.Logger">
+            <summary>
+            Logger for this class. 
+            </summary>
+        </member>
+        <member name="E:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.DataInteraction.ExportCrmDataHandler.AddNewProgressItem">
+            <summary>
+            Raised when progress is added. 
+            </summary>
+        </member>
+        <member name="E:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.DataInteraction.ExportCrmDataHandler.UpdateProgressItem">
+            <summary>
+            Raised when a progress item is updated
+            </summary>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.DataInteraction.ExportCrmDataHandler.#ctor(Microsoft.Xrm.Tooling.Connector.CrmServiceClient)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="crmConnection">CrmServiceClient instance</param>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.DataInteraction.ExportCrmDataHandler.ExportData(System.String,System.String,Microsoft.PowerPlatform.Tooling.BatchedTelemetry.IAppTelemetryClient)">
+            <summary>
+            Begins the reading process for Exporting data from CRM . 
+            </summary>
+            <param name="schemaFileName">Name of the file.</param>
+            <param name="outputFileName">Name of the file.</param>
+            <param name="telemetry">Tracking telemetry</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.DataInteraction.ExportCrmDataHandler.ExportData(System.String,System.String)">
+            <summary>
+            Begins the reading process for Exporting data from CRM . 
+            </summary>
+            <param name="schemaFileName">Name of the file.</param>
+            <param name="outputFileName">Name of the file.</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.DataInteraction.ExportCrmDataHandler.SaveOutputToDisk(System.String,System.String,System.String)">
+            <summary>
+            Saves the data to disk. 
+            </summary>
+            <param name="schemaFileName"></param>
+            <param name="outputFileName"></param>
+            <param name="tempExportDataDirectory"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.DataInteraction.ExportCrmDataHandler.ReadDataFromCrm(System.String,System.String)">
+            <summary>
+            Processes the shchema file and reads data from CRM. 
+            </summary>
+            <param name="schemaFileName"></param>
+            <param name="exportDataDirectory"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.DataInteraction.ExportCrmDataHandler.ValidateSchema">
+            <summary>
+            Validate Schema
+            </summary>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.DataInteraction.ExportCrmDataHandler.ExportFiles(System.String)">
+            <summary>
+            Export file fields
+            </summary>
+            <param name="exportDataDirectory"></param>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.DataInteraction.ExportCrmDataHandler.DownloadFileAttribute(Microsoft.Xrm.Tooling.Connector.CrmServiceClient,Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.ProgressItemEventArgs,System.String,System.Guid,Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Data.entitiesEntityRecordField,System.String)">
+            <summary>
+            Download FileAttribute
+            </summary>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.DataInteraction.ExportCrmDataHandler.HandleProductTaxonomyEntities(Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntity)">
+            <summary>
+            Returns if the entity needs to be skipped while export
+            </summary>
+            <param name="entity">the entity</param>
+            <returns>entity needs to be skipped while export</returns>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.DataInteraction.ExportCrmDataHandler.FetchDataFromCrm(Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntity,Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.ProgressItemEventArgs)">
+            <summary>
+            Fetches the data.
+            </summary>
+            <param name="entity">The entity.</param>
+            <param name="progressArgs">The entity.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.DataInteraction.ExportCrmDataHandler.PageEnabledFetchFromCRM(System.String,System.Collections.Generic.List{System.String},System.String,System.String@,System.Boolean@,System.Int32,System.Int32)">
+            <summary>
+            Get from CRM with Paging control.. 
+            </summary>
+            <param name="logicalName"></param>
+            <param name="fieldList"></param>
+            <param name="fetchXml"></param>
+            <param name="pageCookie"></param>
+            <param name="isMoreRecords"></param>
+            <param name="iPageCount"></param>
+            <param name="iPageNumber"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.DataInteraction.ExportCrmDataHandler.GenerateSpecialFiltersList(System.String)">
+            <summary>
+            Generates any specailzied Filters for Entities. 
+            </summary>
+            <param name="logicalName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.DataInteraction.ExportCrmDataHandler.MergeFetchXmlWithFields(System.String,System.Collections.Generic.List{System.String},System.String)">
+            <summary>
+            Merge fetchXml with fileds
+            </summary>
+            <param name="fetchXml">Input FetxhXML (with filters only)</param>
+            <param name="fieldList">Fields to be fetched</param>
+            <param name="logicalName">Name of entity</param>
+            <returns>Merged FetchXML (with attributes and filters)</returns>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.DataInteraction.ExportCrmDataHandler.GetDynamicPropertyAssociations">
+            <summary>
+            Gets the dynamic property associations and their regarding object ids
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.DataInteraction.ExportCrmDataHandler.FetchRelationshipData(System.Collections.Generic.List{Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntityRelationship})">
+            <summary>
+            Fetches the relationship data.
+            </summary>
+            <param name="relationships">The relationship.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.DataInteraction.ExportCrmDataHandler.ConstructExportDataStructure(Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntity,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.Dictionary{System.String,System.Object}})">
+            <summary>
+            Constructs the data structure.
+            </summary>
+            <param name="entity">The entity.</param>
+            <param name="results">The results.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.DataInteraction.ExportCrmDataHandler.FetchManyToManyRelationshipData(System.Guid,Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntity,Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntityRelationship)">
+            <summary>
+            Fetches the many to many relationship data.
+            </summary>
+            <param name="guRootId"></param>
+            <param name="entity"></param>
+            <param name="m2mRel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.DataInteraction.ExportCrmDataHandler.ConstructDataStructure(Microsoft.Xrm.Tooling.Dmt.DataMigCommon.DataModel.Schema.entitiesEntityRelationship,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.Dictionary{System.String,System.Object}})">
+            <summary>
+            Constructs the data structure.
+            </summary>
+            <param name="relationship">The relationship.</param>
+            <param name="results">The results.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.DataInteraction.ExportCrmDataHandler.GetDataItemFromResult(System.Collections.Generic.Dictionary{System.String,System.Object},System.String,System.String,System.String@,System.String@)">
+            <summary>
+            Gets the data item from result.
+            </summary>
+            <param name="result">The result.</param>
+            <param name="fieldName">Name of the field.</param>
+            <param name="fieldType">Type of the field.</param>
+            <param name="lookupEntity">Lookup Entity</param>
+            <param name="lookupEntityName">Lookup Entity Name</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.DataInteraction.ExportCrmDataHandler.UpdateProgress(Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.ProgressItemEventArgs,System.String,Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.ProgressItemStatus)">
+            <summary>
+            Updates a Progress Item. 
+            </summary>
+            <param name="progressArgs"></param>
+            <param name="text"></param>
+            <param name="status"></param>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.DataInteraction.ExportCrmDataHandler.AddProgressItem(System.String,Microsoft.Xrm.Tooling.Dmt.DataMigCommon.Utility.ProgressItemStatus)">
+            <summary>
+            Adds a new progres item to the UI. 
+            </summary>
+            <param name="text"></param>
+            <param name="status"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.DataInteraction.ExportCrmDataHandler.Dispose(System.Boolean)">
+            <summary>
+            Dispose
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.DataInteraction.ExportCrmDataHandler.Dispose">
+            <summary>
+            Dispose
+            </summary>
+        </member>
+        <member name="T:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.Properties.Resources.ADDING_RECORDS_EXPORT_SET">
+            <summary>
+              Looks up a localized string similar to {0} Adding {1} records to export set.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.Properties.Resources.BEGINING_EXPORT">
+            <summary>
+              Looks up a localized string similar to Beginning Export from CRM... Exporting {0} Entities.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.Properties.Resources.ERROR_REQUESTING_DATA">
+            <summary>
+              Looks up a localized string similar to {0} : Error requesting data : {1}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.Properties.Resources.EXPORT_CRM_COMPLETE_EXPORTED_ENTITIES">
+            <summary>
+              Looks up a localized string similar to The export from CRM is complete. Exported {0} entities, duration of export: {1} .
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.Properties.Resources.EXPORT_CRM_FAILED_CHECK_LOG_EXPORT_DURATION">
+            <summary>
+              Looks up a localized string similar to The export from CRM failed. Check the log, duration of export: {0} .
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.Properties.Resources.EXPORT_FILES_PROCESS_COMPLETED">
+            <summary>
+              Looks up a localized string similar to Export files step completed..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.Properties.Resources.EXPORT_FILES_PROCESS_FAILED">
+            <summary>
+              Looks up a localized string similar to Failed to export files. See the log for details..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.Properties.Resources.EXPORT_FROM_CRM_ENTITIES_PROCESS_COMPLETE">
+            <summary>
+              Looks up a localized string similar to Export from CRM of {0} entities. The process is complete..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.Properties.Resources.EXPORTING_FILE">
+            <summary>
+              Looks up a localized string similar to Exporting {0} - {1}Mb.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.Properties.Resources.EXPORTING_FILES">
+            <summary>
+              Looks up a localized string similar to Exporting files.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.Properties.Resources.EXPORTING_RECORDS">
+            <summary>
+              Looks up a localized string similar to Exporting records from {0}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.Properties.Resources.FAILED_SCHEMA_VALIDATION_MISSING_ENTITIES">
+            <summary>
+              Looks up a localized string similar to Schema validation failed. Missing {0} entities.  See the log for missing entities..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.Properties.Resources.FAILED_TO_ADD_RECORDS_TO_EXPORT_SET">
+            <summary>
+              Looks up a localized string similar to {0} : Failed to add {1} records to the export set..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.Properties.Resources.IMPORT_PROCESS_COMPLETED">
+            <summary>
+              Looks up a localized string similar to Import process completed..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.Properties.Resources.NO_DATA_FOUND_ENTITY">
+            <summary>
+              Looks up a localized string similar to {0} : No data found for the entity..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.Properties.Resources.READING_RECORDS">
+            <summary>
+              Looks up a localized string similar to {0} Reading Records...
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.Properties.Resources.READING_RECORDS_FOUND_RECORDS_REQUESTING_NEXT">
+            <summary>
+              Looks up a localized string similar to {0} Reading records.. Found {1} records, requesting the next {2}..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.Properties.Resources.READING_RECORDS_READ_COMPLETE">
+            <summary>
+              Looks up a localized string similar to {0} Reading records... Read complete for {1} records..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.Properties.Resources.RECORDS_ADDED_TO_EXPORT_SET">
+            <summary>
+              Looks up a localized string similar to {0} : {1} records added to the export set..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.Properties.Resources.RUNNING_SCHEMA_VALIDATION">
+            <summary>
+              Looks up a localized string similar to Running Schema Validation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.Properties.Resources.SCHEMA_FILE_OUTPUT_FILE_REQUIRED">
+            <summary>
+              Looks up a localized string similar to The schema file and an output file name are required..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.Properties.Resources.SCHEMA_VALIDATION_COMPLETE">
+            <summary>
+              Looks up a localized string similar to The schema validation is complete..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Dmt.ExportProcessor.Properties.Resources.SCHEMA_VALIDATION_FAILED_MISSING_FIELDS_ENTITIES">
+            <summary>
+              Looks up a localized string similar to The schema validation failed for the missing fields on the entities. See the log for missing fields..
+            </summary>
+        </member>
+    </members>
+</doc>
