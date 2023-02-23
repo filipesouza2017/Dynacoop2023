@@ -73,9 +73,9 @@ namespace Dynacoop2023.AlfaPeople.ConsoleApplication.Controller
             return Conta.GetAccountByLike(like);
         }
 
-        public void IncrementNumberOfOpp(Entity oppAccount)
+        public void IncrementOrDecrementNumberOfOpp(Entity oppAccount, bool? incrementOrDecrement)
         {
-            Conta.IncrementNumberOfOpp(oppAccount);
+            Conta.IncrementOrDecrementNumberOfOpp(oppAccount, incrementOrDecrement);
         }
 
         public void UpsertMultipleRequest(EntityCollection entityCollection)

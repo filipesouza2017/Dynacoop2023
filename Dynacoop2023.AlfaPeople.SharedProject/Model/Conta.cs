@@ -193,10 +193,18 @@ namespace Dynacoop2023.AlfaPeople.ConsoleApplication.Model
             ).Entities.FirstOrDefault();
         }
 
-        public void IncrementNumberOfOpp(Entity oppAccount)
+        public void IncrementOrDecrementNumberOfOpp(Entity oppAccount, bool? decrementOrIncrement)
         {
             int numberOfOpp = oppAccount.Contains("dcp_nmr_total_opp") ? (int)oppAccount["dcp_nmr_total_opp"] : 0;
-            numberOfOpp += 1;
+
+            if (Convert.ToBoolean(decrementOrIncrement))
+            {
+                numberOfOpp += 1;
+            }
+            else
+            {
+                numberOfOpp -= 1;
+            }
             oppAccount["dcp_nmr_total_opp"] = numberOfOpp;
             ServiceClient.Update(oppAccount);
         }
