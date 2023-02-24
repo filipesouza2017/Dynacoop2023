@@ -122,6 +122,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContactManager.cs" />
+    <Compile Include="DynacoopISV\PluginCore.cs" />
     <Compile Include="OpportunityManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

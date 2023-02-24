@@ -1,9 +1,11 @@
 ﻿using Dynacoop2023.AlfaPeople.ConsoleApplication.Controller;
 using Dynacoop2023.AlfaPeople.ConsoleApplication.Model;
+using Dynacoop2023.AlfaPeople.MyFirstPlugins.DynacoopISV;
 using Microsoft.Xrm.Sdk;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Services.Description;
@@ -11,22 +13,15 @@ using System.Web.Services.Description;
 namespace Dynacoop2023.AlfaPeople.MyFirstPlugins
 {
     //.net FRAMEWORK 4.6.2
-    public class OpportunityManager : IPlugin
+    public class OpportunityManager : PluginCore
     {
-        public IOrganizationService Service { get; set; }
-
-        public void Execute(IServiceProvider serviceProvider)
+        public override void ExecutePlugin(IServiceProvider serviceProvider)
         {
-            IPluginExecutionContext context = (IPluginExecutionContext)serviceProvider.GetService(typeof(IPluginExecutionContext));
-            IOrganizationServiceFactory serviceFactory = (IOrganizationServiceFactory)serviceProvider.GetService(typeof(IOrganizationServiceFactory));
-            Service = serviceFactory.CreateOrganizationService(context.UserId);
-            ITracingService tracingService = (ITracingService)serviceProvider.GetService(typeof(ITracingService));
-
             Entity opportunity = new Entity();
             bool? incrementOrDecrement = null;
 
-            SetVariables(context, out opportunity, out incrementOrDecrement);
-            ExecuteOpportunityProcess(context, opportunity, incrementOrDecrement);
+            SetVariables(this.Context, out opportunity, out incrementOrDecrement);
+            ExecuteOpportunityProcess(this.Context, opportunity, incrementOrDecrement);
         }
 
         private void ExecuteOpportunityProcess(IPluginExecutionContext context, Entity opportunity, bool? incrementOrDecrement)
