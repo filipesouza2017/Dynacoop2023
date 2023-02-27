@@ -2,6 +2,7 @@
 using Dynacoop2023.AlfaPeople.ConsoleApplication.Model;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Tooling.Connector;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,15 @@ namespace Dynacoop2023.AlfaPeople.ConsoleApplication
     {
         static void Main(string[] args)
         {
+            var options = new RestClientOptions("https://localhost:7053")
+            {
+                MaxTimeout = -1,
+            };
+            var client = new RestClient(options);
+            var request = new RestRequest("/product", Method.Post);
+            RestResponse response = client.Execute(request);
+            Console.WriteLine(response.Content);
+
             CrmServiceClient serviceClient = Singleton.GetService();
 
             ContaController contaController = new ContaController(serviceClient);

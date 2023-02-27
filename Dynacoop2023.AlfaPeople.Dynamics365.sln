@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dynacoop2023.AlfaPeople.MyF
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Dynacoop2023.AlfaPeople.SharedProject", "Dynacoop2023.AlfaPeople.SharedProject\Dynacoop2023.AlfaPeople.SharedProject.shproj", "{C2D40D37-1B4F-4780-8259-F6C32ED6E56C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dynacoop2023.AlfaPeople.Customizations", "Dynacoop2023.AlfaPeople.Customizations\Dynacoop2023.AlfaPeople.Customizations.csproj", "{6FCFBA9F-E860-4AB5-B7EE-361665C37027}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{227A1A9E-E9E3-45F3-BACF-93E294BB0304}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{227A1A9E-E9E3-45F3-BACF-93E294BB0304}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{227A1A9E-E9E3-45F3-BACF-93E294BB0304}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FCFBA9F-E860-4AB5-B7EE-361665C37027}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FCFBA9F-E860-4AB5-B7EE-361665C37027}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FCFBA9F-E860-4AB5-B7EE-361665C37027}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FCFBA9F-E860-4AB5-B7EE-361665C37027}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

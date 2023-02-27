@@ -10,6 +10,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Controller\ContaController.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\ExtensionClass.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Conta.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)VO\ProductVO.cs" />
   </ItemGroup>
 </Project>
